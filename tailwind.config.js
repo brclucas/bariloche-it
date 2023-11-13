@@ -9,6 +9,8 @@ export const theme = {
   extend: {
     spacing: {
       '15': '3.5rem', // Equivalente a 40px
+      '25': '10rem', 
+
     },
     bottom: {
       '15': '3.5rem', // Equivalente a 40px

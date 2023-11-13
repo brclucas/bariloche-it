@@ -22,7 +22,7 @@ const Nav = () => {
     <>
       <header className="bg-nav fixed sm:px-8 px-4 py-2 z-10 w-full">
         <nav className="flex justify-between items-center max-container">
-          <img href="/" className="text-3xl font-bold" src='../../public/logobit.ico' alt="<BIT/>" />
+          <img className="m-0 p-0 max-h-[50px] lg:max-h-[70px]" src='tests.svg' alt="<BIT/>" />
           <ul className="flex-1 flex justify-center items-center gap-16 max-lg:hidden ">
             {navLinks.map((item) => (
               <li key={item.label}>

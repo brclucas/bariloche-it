@@ -60,9 +60,9 @@ const Contacto = () => {
 
   return (
       <main id="contacto" className='flex flex-col items-center h-screen w-full xl:gap-2 bg-black'>
-        <h1 className='text-5xl text-red italic mt-5'>¡Contactame!</h1>
-        <div className='bg-white w-[60%] h-[2px]'></div>
-        <article className='flex flex-col justify-center items-center mt-10 relative'>
+        <h1 className='text-5xl text-red italic mt-5 select-none'>¡Contactame!</h1>
+        <div className='bg-white w-[60%] h-[2px] select-none '></div>
+        <article className='select-none flex flex-col justify-center items-center mt-10 relative'>
           <form autoComplete="off" ref={formulario} onSubmit={sendEmail} className='p-6 xs:b-10 md:b-10 lg:b-12 xl:b-16 rounded-md bg-wait max-w-screen-md w-full'>
             <div className="">
               <img 
@@ -70,7 +70,7 @@ const Contacto = () => {
                 id="bandera-imagen" 
                 src="" 
                 alt="Bandera" 
-                className="absolute top-0 right-0 m-5 w-25 h-16" 
+                className="absolute top-0 right-0 m-5 w-20 h-14" 
               />
              </div>
               <section className='text-white flex flex-col gap-3 text-red mt-8'>

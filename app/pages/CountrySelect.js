@@ -14,7 +14,7 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     maxWidth: '80%',
     maxHeight: '80vh',
-    backgroundColor: 'rgba(166, 166, 159, 0.8)'
+    backgroundColor: 'rgba(19, 18, 33, 0.5)'
   },
 };
 
@@ -85,15 +85,15 @@ const CountrySelect = ({ onChange }) => {
           onChange={(e) => setSearchText(e.target.value)}
           className="w-full p-2 mb-2 border-b border-gray-300 focus:outline-none"
         />
-        <div className="max-h-96 overflow-y-auto">
+        <div className="bg-nav max-h-96 overflow-y-auto">
           {filteredCountries.map((country) => (
             <div
               key={country.label}
-              className="flex items-center justify-between p-3 cursor-pointer hover:bg-gray-100"
+              className="flex items-center justify-between p-3 cursor-pointer hover:bg-nav"
               onClick={() => handleCountrySelect(country)}
             >
               <div>{country.label}</div>
-              <img src={country.bandera} alt={`Flag of ${country.label}`} className="w-6 h-6" />
+              <img src={country.bandera} alt={`Flag of ${country.label}`} className="w-10 h-6" />
             </div>
           ))}
         </div>

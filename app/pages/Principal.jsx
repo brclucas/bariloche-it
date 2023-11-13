@@ -17,21 +17,24 @@ const Principal = () => {
   return (
 
     <section id="home" className='bg-nav flex flex-col md:flex-row lg:flex-row xl:flex-row h-screen'>
-      <div className='xl:mx-20 lg:mx-20 md:mx-20 sm:mx-10 xs:mx-5 xl:mt-20 lg:mt-20 md:mt-20 sm:mt-20 xs:mt-20'>
-      <div className='animate-pulse pointer-events-none'>
+      <div className='xl:mx-20 lg:mx-20 md:mx-20 sm:mx-10 xs:mx-5 xl:mt-25 lg:mt-25 md:mt-25 sm:mt-25 xs:mt-25'>
+      <div className='animate-pulse pointer-events-none '>
         <LightsSvg />
       </div >
         <div data-aos="fade-right">
           <div className='mt-0'>
-            <h3 className='xs:text-3xl md:text-2xl lg:text-4xl xl:text-5xl text-lightblue opacity-70 mb-5'>¡Bienvenido! 👨🏻‍💻</h3>
-            <h2 className='xs:text-4xl md:text-4xl lg:text-6xl xl:text-7xl text-white mb-5'>
+            <h3 className=' select-none xs:text-4xl md:text-3xl lg:text-5xl xl:text-6xl text-white mb-5'>¡Bienvenido! 👨🏻‍💻</h3>
+            <h2 className=' select-none xs:text-4xl md:text-3xl lg:text-5xl xl:text-6xl text-white mb-5'>
               Somos </h2>
+              <h2 className='select-none xs:text-4xl md:text-4xl lg:text-6xl xl:text-7xl text-lightblue mb-5'>
+              Bariloche IT </h2>
           </div>
-          <h2 className='mt-4 md:text-3xl lg:text-3xl xl:text-3xl text-xl text-white flex-row gap-3'>
+
+          <h2 className='select-none mt-4 md:text-3xl lg:text-3xl xl:text-3xl text-xl text-white flex-row gap-3'>
             <span className='select-none text-lightblue'></span>{"Nos especializamos en: "}
           </h2>
           <h2 className='mt-4 md:text-3xl lg:text-3xl xl:text-3xl text-xl text-white flex-row gap-3'>
-            <span className='text-lightblue italic'>
+            <span className='text-lightblue italic select-none'>
               <TypeAnimation
                 sequence={[
                   'Networking y Ciberseguridad... ',
