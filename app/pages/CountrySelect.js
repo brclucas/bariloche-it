@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 
+Modal.setAppElement("#contacto"); // Reemplaza "#root" con el selector del elemento principal de tu aplicación
 
 const customStyles = {
   content: {

@@ -1,67 +1,78 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {
 
-      screens: {
-        'xs': '0px',
-      },
+export const content = [
+  './pages/**/*.{js,ts,jsx,tsx,mdx}',
+  './components/**/*.{js,ts,jsx,tsx,mdx}',
+  './app/**/*.{js,ts,jsx,tsx,mdx}',
+];
+export const theme = {
+  extend: {
+    spacing: {
+      '15': '3.5rem', // Equivalente a 40px
+    },
+    bottom: {
+      '15': '3.5rem', // Equivalente a 40px
+    },
 
-      backgroundColor: {
-        'nav': 'rgba(19, 18, 33, 0.5)',
-        'wait': 'rgba(166,166,166,0.8)',
-      },
+    textColor: {
+      'lightblue': '#4fd1c5',
+    },
 
-      gradientColorStops: {
-        'secondary-from': 'rgba(0, 56, 255, 1)',
-        'secondary-to': 'rgba(0, 56, 255, 0)',
-      },
+    screens: {
+      'xs': '0px',
+    },
 
-      animation: {
-        'bounce': 'bounce 1s infinite',
-        'floatSlider': 'floatSlider 2s ease-in-out infinite',
-        'pulse': 'pulse 2s infinite', // Ejemplo de animación con duración de 2 segundos
-      },
-      keyframes: {
-        'bounce': {
-          '0%, to': {
-            transform: 'translateY(-25%)',
-            'animation-timing-function': 'cubic-bezier(.8, 0, 1, 1)',
-          },
-          '50%': {
-            transform: 'none',
-            'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)',
-          },
+    backgroundColor: {
+      'nav': 'rgba(19, 18, 33, 0.5)',
+      'wait': 'rgba(166,166,166,0.8)',
+      'red': 'rgba(255,17,0,0.8)',
+      'yellow': 'rgba(229,226,57,0.8)',
+
+    },
+
+    gradientColorStops: {
+      'secondary-from': 'rgba(0, 56, 255, 1)',
+      'secondary-to': 'rgba(0, 56, 255, 0)',
+    },
+
+    animation: {
+      'bounce': 'bounce 1s infinite',
+      'floatSlider': 'floatSlider 2s ease-in-out infinite',
+      'pulse': 'pulse 1s infinite', // Ejemplo de animación con duración de 2 segundos
+    },
+    keyframes: {
+      'bounce': {
+        '0%, to': {
+          transform: 'translateY(-25%)',
+          'animation-timing-function': 'cubic-bezier(.8, 0, 1, 1)',
         },
-        'floatSlider': {
-          '0%, to': {
-            transform: 'translateY(0)',
-          },
-          '50%': {
-            transform: 'translateY(-10px)',
-          },
+        '50%': {
+          transform: 'none',
+          'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)',
         },
-        'pulse': {
-          '50%': {
-            opacity: 0.5,
-          },
+      },
+      'floatSlider': {
+        '0%, to': {
+          transform: 'translateY(0)',
+        },
+        '50%': {
+          transform: 'translateY(-10px)',
+        },
+      },
+      'pulse': {
+        '50%': {
+          opacity: 0.5,
         },
       },
     },
   },
-  plugins: [
-
-    function ({ addVariant, e }) {
-      addVariant('xs', ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => {
-          return `.xs${separator}${className}`;
-        });
+};
+export const plugins = [
+  function ({ addVariant, e }) {
+    addVariant('xs', ({ modifySelectors, separator }) => {
+      modifySelectors(({ className }) => {
+        return `.xs${separator}${className}`;
       });
-    },
-  ],
-}
+    });
+  },
+];

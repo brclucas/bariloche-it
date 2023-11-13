@@ -1,7 +1,7 @@
 const LightsSvg = () => {
     return (
       <div>
-        <div className="bottom-0 absolute lg:block top-0 left-0 z-10 opacity-70 hidden">
+        <div className="bottom-0 fixed top-0 left-0 z-10 opacity-70">
           <svg
             width="783"
             height="388"
@@ -13,9 +13,9 @@ const LightsSvg = () => {
               <rect
                 width="478"
                 height="366"
-                transform="matrix(-1 0 0 1 583 -178)"
+                transform="matrix(-1 0 0 1 583 -200)"
                 fill="#87D0D0"
-                fillOpacity="0.27"
+                fillOpacity="0.35"
               />
             </g>
             <defs>
@@ -43,10 +43,10 @@ const LightsSvg = () => {
             </defs>
           </svg>
         </div>
-        <div className="absolute lg:block bottom-0 right-0 z-10 opacity-70 hidden">
+        <div className="fixed bottom-0 right-0 z-10 opacity-70 ">
           <svg
             width="512"
-            height="615"
+            height="100vh"
             viewBox="0 0 512 615"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ const LightsSvg = () => {
                 height="501"
                 transform="matrix(-1 0 0 1 823 200)"
                 fill="#7F7FD6"
-                fillOpacity="0.2"
+                fillOpacity="0.35"
               />
             </g>
             <defs>

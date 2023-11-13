@@ -12,10 +12,11 @@
     "aos": "^2.3.4",
     "axios": "^1.6.1",
     "emailjs-com": "^3.2.0",
-    "next": "14.0.1",
+    "next": "^14.0.2",
     "react": "^18.2.0",
-    "react-dom": "^18",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
+    "react-image": "^4.1.0",
     "react-modal": "^3.16.1",
     "react-scroll": "^1.9.0",
     "react-select": "^5.8.0",
@@ -23,6 +24,7 @@
     "sweetalert2": "^11.9.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.22.15",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.1",
