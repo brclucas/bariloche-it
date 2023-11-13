@@ -37,15 +37,15 @@ const Principal = () => {
             <span className='text-lightblue italic select-none'>
               <TypeAnimation
                 sequence={[
-                  'Networking y Ciberseguridad... ',
+                  '🔧 Telecomunicaciones... ',
                   3000,
-                  'Asesoría y Soporte Técnico en IT...',
+                  '🌐 Networking...',
                   3000,
-                  'Infraestructura On-Premise y Cloud...',
+                  '🤝 Asesoría Estratégica...',
                   3000,
-                  'Desarrollo Full Stack...',
+                  '🔒 Ciberseguridad...',
                   3000,
-                  'Y Mucho...',
+                  'Y Mucho mas!...',
                   3000,
                 ]}
                 wrapper='span'

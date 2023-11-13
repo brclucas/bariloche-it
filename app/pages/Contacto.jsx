@@ -63,7 +63,7 @@ const Contacto = () => {
         <h1 className='text-5xl text-red italic mt-5 select-none'>¡Contactame!</h1>
         <div className='bg-white w-[60%] h-[2px] select-none '></div>
         <article className='select-none flex flex-col justify-center items-center mt-10 relative'>
-          <form autoComplete="off" ref={formulario} onSubmit={sendEmail} className='p-6 xs:b-10 md:b-10 lg:b-12 xl:b-16 rounded-md bg-wait max-w-screen-md w-full'>
+          <form ref={formulario} onSubmit={sendEmail} className='p-6 xs:b-10 md:b-10 lg:b-12 xl:b-16 rounded-md bg-wait max-w-screen-md w-full'>
             <div className="">
               <img 
                 hidden={true} 
@@ -74,21 +74,28 @@ const Contacto = () => {
               />
              </div>
               <section className='text-white flex flex-col gap-3 text-red mt-8'>
-              <label>Nombre</label>
+
+              <label>Nombre
               <input
                 className='text-black input-style rounded-md'
                 type="text"
                 name="user_name"
+                autocomplete="off"
               />
+              </label>
               {errors.user_name && <span className="text-red-500">{errors.user_name}</span>}
-              <label>Email</label>
+
+              <label>Email
               <input
                 className='text-black input-style rounded-md'
                 type="email"
                 name="user_email"
+                autocomplete="off"
               />
               {errors.user_email && <span className="text-red-500">{errors.user_email}</span>}
-              <label>Teléfono</label>
+              </label>
+
+              <label>Teléfono
               <div className="text-black flex items-center justify-center rounded-md">
                 <div className="input-style">
                   <CountrySelect
@@ -101,20 +108,24 @@ const Contacto = () => {
                     type="tel"
                     name="phone"
                     placeholder={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`}
+                    autocomplete="off"
                   />
                 </div>
               </div>
-    
-              <input
-                hidden={true}
-                name="prefix"
-                defaultValue={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`}
-              />
-              {errors.phone && <span className="text-red-500">{errors.phone}</span>}
-              <label>Mensaje</label>
+                  <input
+                    hidden={true}
+                    name="prefix"
+                    defaultValue={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`}
+                    autocomplete="off"/>
+                  {errors.phone && <span className="text-red-500">{errors.phone}</span>}
+              </label>
+
+              
+              <label>Mensaje
               <textarea
                 className=' text-black input-style rounded-md'
                 name="message"
+                autocomplete="off"
               />
               {errors.message && <span className="text-red-500">{errors.message}</span>}
               <input
@@ -122,6 +133,7 @@ const Contacto = () => {
                 type="submit"
                 value="Send"
               />
+              </label>
             </section>
           </form>
         </article>
