@@ -16,7 +16,7 @@ const Principal = () => {
 
   return (
 
-    <section id="home" className='bg-nav flex flex-col md:flex-row lg:flex-row xl:flex-row h-screen'>
+    <section id="inicio" className='bg-nav flex flex-col md:flex-row lg:flex-row xl:flex-row h-screen'>
       <div className='xl:mx-20 lg:mx-20 md:mx-20 sm:mx-10 xs:mx-5 xl:mt-25 lg:mt-25 md:mt-25 sm:mt-25 xs:mt-25'>
       <div className='animate-pulse pointer-events-none '>
         <LightsSvg />
@@ -26,7 +26,7 @@ const Principal = () => {
             <h3 className=' select-none xs:text-4xl md:text-3xl lg:text-5xl xl:text-6xl text-white mb-5'>¡Bienvenido! 👨🏻‍💻</h3>
             <h2 className=' select-none xs:text-4xl md:text-3xl lg:text-5xl xl:text-6xl text-white mb-5'>
               Somos </h2>
-              <h2 className='select-none xs:text-4xl md:text-4xl lg:text-6xl xl:text-7xl text-lightblue mb-5'>
+              <h2 className='select-none xs:text-4xl md:text-4xl lg:text-6xl xl:text-7xl text-glaciar mb-5'>
               Bariloche IT </h2>
           </div>
 
@@ -34,7 +34,7 @@ const Principal = () => {
             <span className='select-none text-lightblue'></span>{"Nos especializamos en: "}
           </h2>
           <h2 className='mt-4 md:text-3xl lg:text-3xl xl:text-3xl text-xl text-white flex-row gap-3'>
-            <span className='text-lightblue italic select-none'>
+            <span className='text-lightblue select-none'>
               <TypeAnimation
                 sequence={[
                   '🔧 Telecomunicaciones... ',
@@ -56,7 +56,7 @@ const Principal = () => {
           </h2>
         </div>
 
-        <article className='fixed bottom-5 right-3 mr-3 text-white'>
+        <article className=' fixed bottom-8 right-3 mr-3 text-white'>
           <div className="flex flex-col items-end">
             <a href="https://api.whatsapp.com/send?phone=5492944161701" rel="noreferrer" target="_blank" className='animate-bounce mb-2 text-3xl hover:scale-110 hover:text-green-500'>
               <SiWhatsapp/>
@@ -70,8 +70,8 @@ const Principal = () => {
           </div>
         </article>
 
-        <Link to="contact" smooth={true} duration={1000} offset={-50}>
-          <button className='fixed bottom-15 left-3 ml-3 text-white animate-bounce text-3xl' >
+        <Link to="contacto" smooth={true} duration={1000} offset={-50}>
+          <button className='hidden md:block fixed bottom-20 left-3 ml-3 text-white animate-bounce text-3xl' >
             <AiOutlineArrowDown />
           </button>
         </Link>

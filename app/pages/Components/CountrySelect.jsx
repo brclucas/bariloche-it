@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
@@ -12,9 +13,9 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    maxWidth: '80%',
+    maxWidth: '30vw',
     maxHeight: '80vh',
-    backgroundColor: 'rgba(19, 18, 33, 0.5)'
+    backgroundColor: 'rgba(166, 166, 159, 1)',
   },
 };
 
@@ -69,7 +70,10 @@ const CountrySelect = ({ onChange }) => {
 
   return (
     <div className="text-black">
-      <div onClick={openModal} className="flex gap-11 xl:flex-row lg:flex-col md:flex-col xs:flex-col justify-center items-center m-auto bg-white	relative rounded-md text-black transition-all duration-300 ease-in-out border-2 focus:border-base focus:outline-none focus:ring-0 cursor-pointer">
+      <div
+        onClick={openModal}
+        className="flex gap-11 xl:flex-row lg:flex-col md:flex-col xs:flex-col justify-center items-center m-auto bg-white relative rounded-md text-black transition-all duration-300 ease-in-out border-2 cursor-pointer"
+      >
         {selectedCountry ? selectedCountry.label : 'Seleccione un Pais...   '}
       </div>
       <Modal
@@ -83,7 +87,7 @@ const CountrySelect = ({ onChange }) => {
           placeholder="Buscar país..."
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
-          className="w-full p-2 mb-2 border-b border-gray-300 focus:outline-none"
+          className="w-full p-2 mb-2 border-b border-gray-300 "
         />
         <div className="bg-nav max-h-96 overflow-y-auto">
           {filteredCountries.map((country) => (
@@ -100,6 +104,7 @@ const CountrySelect = ({ onChange }) => {
       </Modal>
     </div>
   );
+  
   
 };
 

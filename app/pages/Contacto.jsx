@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import emailjs from 'emailjs-com';
 import Swal from 'sweetalert2';
-import CountrySelect from './CountrySelect';
+import CountrySelect from './Components/CountrySelect';
 
 const Contacto = () => {
   const formulario = useRef();
@@ -59,12 +59,14 @@ const Contacto = () => {
   };
 
   return (
+    <div id="contacto" className='hidden md:block'>
+
       <main id="contacto" className='flex flex-col items-center h-screen w-full xl:gap-2 bg-black'>
         <h1 className='text-5xl text-red italic mt-5 select-none'>¡Contactame!</h1>
         <div className='bg-white w-[60%] h-[2px] select-none '></div>
         <article className='select-none flex flex-col justify-center items-center mt-10 relative'>
           <form ref={formulario} onSubmit={sendEmail} className='p-6 xs:b-10 md:b-10 lg:b-12 xl:b-16 rounded-md bg-wait max-w-screen-md w-full'>
-            <div className="">
+            <div className="float-right">
               <img 
                 hidden={true} 
                 id="bandera-imagen" 
@@ -74,28 +76,21 @@ const Contacto = () => {
               />
              </div>
               <section className='text-white flex flex-col gap-3 text-red mt-8'>
-
-              <label>Nombre
+              <label>Nombre</label>
               <input
                 className='text-black input-style rounded-md'
                 type="text"
                 name="user_name"
-                autocomplete="off"
               />
-              </label>
               {errors.user_name && <span className="text-red-500">{errors.user_name}</span>}
-
-              <label>Email
+              <label>Email</label>
               <input
                 className='text-black input-style rounded-md'
                 type="email"
                 name="user_email"
-                autocomplete="off"
               />
               {errors.user_email && <span className="text-red-500">{errors.user_email}</span>}
-              </label>
-
-              <label>Teléfono
+              <label>Teléfono</label>
               <div className="text-black flex items-center justify-center rounded-md">
                 <div className="input-style">
                   <CountrySelect
@@ -108,24 +103,20 @@ const Contacto = () => {
                     type="tel"
                     name="phone"
                     placeholder={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`}
-                    autocomplete="off"
                   />
                 </div>
               </div>
-                  <input
-                    hidden={true}
-                    name="prefix"
-                    defaultValue={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`}
-                    autocomplete="off"/>
-                  {errors.phone && <span className="text-red-500">{errors.phone}</span>}
-              </label>
-
-              
-              <label>Mensaje
+    
+              <input
+                hidden={true}
+                name="prefix"
+                defaultValue={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`}
+              />
+              {errors.phone && <span className="text-red-500">{errors.phone}</span>}
+              <label>Mensaje</label>
               <textarea
                 className=' text-black input-style rounded-md'
                 name="message"
-                autocomplete="off"
               />
               {errors.message && <span className="text-red-500">{errors.message}</span>}
               <input
@@ -133,11 +124,13 @@ const Contacto = () => {
                 type="submit"
                 value="Send"
               />
-              </label>
             </section>
           </form>
         </article>
       </main>
+
+      </div>
+
     );
 };
 

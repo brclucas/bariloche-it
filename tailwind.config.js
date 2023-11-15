@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 
+
 export const content = [
+  './src/**/*.{js,jsx,ts,tsx}',
+  'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
   './pages/**/*.{js,ts,jsx,tsx,mdx}',
   './components/**/*.{js,ts,jsx,tsx,mdx}',
   './app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,7 +12,7 @@ export const theme = {
   extend: {
     spacing: {
       '15': '3.5rem', // Equivalente a 40px
-      '25': '10rem', 
+      '25': '7rem', 
 
     },
     bottom: {
@@ -17,11 +20,12 @@ export const theme = {
     },
 
     textColor: {
-      'lightblue': '#4fd1c5',
+      'lightblue': '#2CBCF5',
     },
 
     screens: {
       'xs': '0px',
+      'cel': '769px'
     },
 
     backgroundColor: {
@@ -29,6 +33,10 @@ export const theme = {
       'wait': 'rgba(166,166,166,0.8)',
       'red': 'rgba(255,17,0,0.8)',
       'yellow': 'rgba(229,226,57,0.8)',
+      'lightblue': '(44, 188, 245,1)',
+      'lightblue-700': '(44, 188, 245,1)',
+
+
 
     },
 
@@ -70,6 +78,7 @@ export const theme = {
   },
 };
 export const plugins = [
+  require('flowbite/plugin'),
   function ({ addVariant, e }) {
     addVariant('xs', ({ modifySelectors, separator }) => {
       modifySelectors(({ className }) => {

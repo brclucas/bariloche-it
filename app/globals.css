@@ -26,3 +26,19 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+#navbar,
+#navbar ul,
+#navbar li,
+#navbar a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 1;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    position: relative;
+}
