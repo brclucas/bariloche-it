@@ -41,4 +41,30 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     position: relative;
+    
+}
+
+
+.slick-slider {
+  width: 80%; /* Ajusta según tus necesidades */
+  margin: 100px auto 0 auto;
+}
+.slick-slider {
+  height: 70%; /* Para ocupar el 100% de la altura del contenedor principal (h-screen) */
+
+}
+
+.card-wrapper {
+  height: 70%; /* Para ocupar el 100% de la altura del contenedor principal (h-screen) */
+}
+
+.slick-slider {
+  height: 70%; /* Para ocupar el 100% de la altura del contenedor principal (h-screen) */
+
+}
+
+
+.slick-initialized{
+  height: 70%; /* Para ocupar el 100% de la altura del contenedor principal (h-screen) */
+
 }

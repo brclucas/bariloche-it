@@ -59,8 +59,7 @@ const Contacto = () => {
   };
 
   return (
-    <div id="contacto" className='hidden md:block'>
-
+    <div id="contacto" className=''>
       <main id="contacto" className='flex flex-col items-center h-screen w-full xl:gap-2 bg-black'>
         <h1 className='text-5xl text-red italic mt-5 select-none'>¡Contactame!</h1>
         <div className='bg-white w-[60%] h-[2px] select-none '></div>

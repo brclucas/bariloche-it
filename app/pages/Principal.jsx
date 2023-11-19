@@ -7,7 +7,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import { Link } from 'react-scroll';
 import LightsSvg from '../../public/LightsSvg';
-
+import ImageSlider from './Components/Carrusel';
 
 const Principal = () => {
   useEffect(() => {
@@ -16,8 +16,13 @@ const Principal = () => {
 
   return (
 
-    <section id="inicio" className='bg-nav flex flex-col md:flex-row lg:flex-row xl:flex-row h-screen'>
-      <div className='xl:mx-20 lg:mx-20 md:mx-20 sm:mx-10 xs:mx-5 xl:mt-25 lg:mt-25 md:mt-25 sm:mt-25 xs:mt-25'>
+    <section id="inicio" className='bg-nav flex flex-col md:flex-row lg:flex-row xl:flex-row h-screen max-h-max[80vh]'>
+          {/* Este div solo se muestra en dispositivos móviles */}
+          <div className='mt-40 h-screen hidden max-cel:block'>       
+            <ImageSlider />
+          </div>
+      {/* Este div solo se muestra en dispositivos XL */}
+      <div className='hidden md:block xl:mx-20 lg:mx-20 md:mx-20 sm:mx-10 xs:mx-5 xl:mt-25 lg:mt-25 md:mt-25 sm:mt-25 xs:mt-25'>
       <div className='animate-pulse pointer-events-none '>
         <LightsSvg />
       </div >
