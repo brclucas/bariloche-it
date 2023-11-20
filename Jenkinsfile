@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build'){
             steps{
-                sh "docker build -t brclucas/bit:${env.BUILD_NUMBER} ."
+                sh "docker build -t brclucas/bit:1.0.${env.BUILD_NUMBER} ."
             }
         }
         stage('Login to Dockerhub'){
