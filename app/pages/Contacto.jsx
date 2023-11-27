@@ -20,7 +20,6 @@ const Contacto = () => {
 
     const { user_name, user_email, message, phone, prefix } = formulario.current;
 
-    // Validación de campos obligatorios
     const newErrors = {};
     if (user_name.value.trim() === '') {
       newErrors.user_name = 'El campo Nombre es obligatorio';
@@ -35,15 +34,13 @@ const Contacto = () => {
       newErrors.phone = 'El campo Teléfono es obligatorio';
     }
 
-    // Si hay errores, actualiza el estado y no envíes el formulario
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      setIsSending(false); // Detener la animación del botón "Send"
+      setIsSending(false);
       return;
     }
 
     try {
-      // Configura tu servicio y plantilla de EmailJS
       await emailjs.sendForm('service_zcqckab', 'template_xn5d0qm', formulario.current, 'wih491HK3bFif_3oU');
 
       Swal.fire(
@@ -54,83 +51,51 @@ const Contacto = () => {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsSending(false); // Detener la animación del botón "Send"
+      setIsSending(false);
     }
   };
 
   return (
-    <div id="contacto" className=''>
-      <main id="contacto" className='flex flex-col items-center h-screen w-full xl:gap-2 bg-black'>
-        <h1 className='text-5xl text-red italic mt-5 select-none'>¡Contactame!</h1>
-        <div className='bg-white w-[60%] h-[2px] select-none '></div>
-        <article className='select-none flex flex-col justify-center items-center mt-10 relative'>
-          <form ref={formulario} onSubmit={sendEmail} className='p-6 xs:b-10 md:b-10 lg:b-12 xl:b-16 rounded-md bg-wait max-w-screen-md w-full'>
-            <div className="float-right">
-              <img 
-                hidden={true} 
-                id="bandera-imagen" 
-                src="" 
-                alt="Bandera" 
-                className="absolute top-0 right-0 m-5 w-20 h-14" 
-              />
-             </div>
-              <section className='text-white flex flex-col gap-3 text-red mt-8'>
-              <label>Nombre</label>
-              <input
-                className='text-black input-style rounded-md'
-                type="text"
-                name="user_name"
-              />
-              {errors.user_name && <span className="text-red-500">{errors.user_name}</span>}
-              <label>Email</label>
-              <input
-                className='text-black input-style rounded-md'
-                type="email"
-                name="user_email"
-              />
-              {errors.user_email && <span className="text-red-500">{errors.user_email}</span>}
-              <label>Teléfono</label>
-              <div className="text-black flex items-center justify-center rounded-md">
-                <div className="input-style">
-                  <CountrySelect
-                    className="text-black mb-2"
-                    onChange={handleCountryChange}
-                    selectedCountry={selectedCountry}
-                  />
-                  <input
-                    className="w-full rounded-md p-2 text-black mt-5"
-                    type="tel"
-                    name="phone"
-                    placeholder={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`}
-                  />
-                </div>
-              </div>
-    
-              <input
-                hidden={true}
-                name="prefix"
-                defaultValue={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`}
-              />
-              {errors.phone && <span className="text-red-500">{errors.phone}</span>}
-              <label>Mensaje</label>
-              <textarea
-                className=' text-black input-style rounded-md'
-                name="message"
-              />
-              {errors.message && <span className="text-red-500">{errors.message}</span>}
-              <input
-                className={`rounded-md w-auto button-style ${isSending ? 'animate-pulse bg-yellow' : 'bg-nav'}`}
-                type="submit"
-                value="Send"
-              />
-            </section>
-          </form>
-        </article>
+    <div id="contacto" className="bg-nav flex items-center justify-center">
+      <main className="bg-wait p-6 xs:b-10 md:b-10 lg:b-12 xl:b-16 rounded-md w-full max-w-md text-center">
+        <h1 className="text-5xl text-red italic mb-4 items-center justify-center text-center">¡Contactame!</h1>
+        <div className="bg-white h-2 mb-6"></div>
+        <form ref={formulario} onSubmit={sendEmail} className="text-white">
+          <label className="block mb-2">Nombre</label>
+          <input className="w-[80%] rounded-md mb-4" type="text" name="user_name" placeholder="Nombre Completo"/>
+          {errors.user_name && <span className="text-red-500">{errors.user_name}</span>}
+
+          <label className="block mb-2">Email</label>
+          <input className="w-[80%] rounded-md mb-4" type="email" name="user_email" placeholder="Correo@ejemplo.com" />
+          {errors.user_email && <span className="text-red-500">{errors.user_email}</span>}
+
+          <label className="block mb-2">Teléfono</label>
+          <div className="w-[80%] mx-auto flex flex-col mb-4 text-center">
+            <CountrySelect className="text-black mr-2 w-[80%]" onChange={handleCountryChange} selectedCountry={selectedCountry} />
+            <input
+              className="w-[100%] rounded-md p-2 text-black"
+              type="tel"
+              name="phone"
+              placeholder={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`}
+            />
+          </div>
+          <input hidden={true} name="prefix" defaultValue={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`} />
+          {errors.phone && <span className="text-red-500">{errors.phone}</span>}
+
+          <label className="block mb-2">Mensaje</label>
+          <textarea className=" w-[80%] rounded-md mb-4" name="message" placeholder="Envianos tu consulta y te contestaremos en breve..."/>
+
+          {errors.message && <span className="text-red-500">{errors.message}</span>}
+
+          <input
+            className={`rounded-md w-full ${isSending ? 'animate-pulse bg-yellow' : 'bg-nav'}`}
+            type="submit"
+            value="Enviar"
+          />
+        </form>
       </main>
-
-      </div>
-
-    );
+    </div>
+  );
 };
 
 export default Contacto;

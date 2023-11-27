@@ -18,7 +18,7 @@ const Principal = () => {
 
     <section id="inicio" className='bg-nav flex flex-col md:flex-row lg:flex-row xl:flex-row h-screen max-h-max[80vh]'>
           {/* Este div solo se muestra en dispositivos móviles */}
-          <div className='mt-40 h-screen hidden max-cel:block'>       
+          <div className='h-screen hidden max-cel:block'>       
             <ImageSlider />
           </div>
       {/* Este div solo se muestra en dispositivos XL */}
@@ -42,16 +42,16 @@ const Principal = () => {
             <span className='text-lightblue select-none'>
               <TypeAnimation
                 sequence={[
-                  '🔧 Telecomunicaciones... ',
+                  '📡 Telecomunicaciones... ',
                   3000,
                   '🌐 Networking...',
                   3000,
-                  '🤝 Asesoría Estratégica...',
+                  '🚀 DevOps y SRE...',
                   3000,
                   '🔒 Ciberseguridad...',
                   3000,
-                  'Y Mucho mas!...',
-                  3000,
+                  '🤝 Asesoría Estratégica...',
+                  3000, 
                 ]}
                 wrapper='span'
                 cursor={true}
