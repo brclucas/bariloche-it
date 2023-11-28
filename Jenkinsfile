@@ -9,15 +9,51 @@ pipeline {
         P_Cont= 3000
     }
     stages {
-        // ... etapas anteriores
+        stage('Build Image') {
+            steps {
+                script {
+                    try {
+                        sh "docker build -t ${env.RepoDockerHub}/${env.NameContainer}:${env.DOCKER_IMAGE_TAG} ."
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        error("Error during Docker build: ${e.message}")
+                    }
+                }
+            }
+        }
+
+        stage('Login to Dockerhub') {
+            steps {
+                script {
+                    try {
+                        withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'DOCKERHUB_CREDENCIALS_PSW', usernameVariable: 'DOCKERHUB_CREDENCIALS_USR')]) {
+                        sh "echo -n $DOCKERHUB_CREDENCIALS_PSW | docker login -u $DOCKERHUB_CREDENCIALS_USR --password-stdin "
+                        }
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        error("Error during Docker login: ${e.message}")
+                    }
+                }
+            }
+        }
+
+        stage('Push image to Dockerhub') {
+            steps {
+                script {
+                    try {
+                        sh "docker push ${env.RepoDockerHub}/${env.NameContainer}:${env.DOCKER_IMAGE_TAG}"
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        error("Error during Docker push: ${e.message}")
+                    }
+                }
+            }
+        }
 
         stage('Create and Update Container') {
             steps {
                 script {
                     def containerName = "BIT-Jenkins"
-
-                    // Calcular la imagen anterior
-                    def Image_Prev = env.BUILD_NUMBER.toInteger() - 1
 
                     // Chequear si hay un contenedor activo con la imagen anterior
                     def existingContainerId = sh(script: "docker ps -q --filter ancestor=${env.RepoDockerHub}/${env.NameContainer}", returnStdout: true).trim()
