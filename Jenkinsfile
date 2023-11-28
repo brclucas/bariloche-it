@@ -6,6 +6,7 @@ pipeline {
         DOCKER_IMAGE_TAG = "1.0.${env.BUILD_NUMBER}"
         P_App = 3000
         P_Cont= 3000
+        Image_Prev = env.BUILD_NUMBER.toInteger() - 1
     }
     stages {
         // ... etapas anteriores
@@ -26,7 +27,7 @@ pipeline {
                     }
 
                     // Eliminar la imagen anterior
-                    sh "docker rmi ${env.RepoDockerHub}/${env.NameContainer}:latest"
+                    sh "docker rmi ${env.RepoDockerHub}/${env.NameContainer}:${Image_Prev}"
 
                     // Crear y ejecutar el nuevo contenedor con la nueva imagen
                     sh "docker run -d --name ${containerName} -p ${env.P_App}:${env.P_Cont} ${env.RepoDockerHub}/${env.NameContainer}:${env.DOCKER_IMAGE_TAG}"
