@@ -1,0 +1,4 @@
+{
+    "include": ["app/**/*.js", "app/**/*.jsx"],
+    "exclude": ["node_modules", "build", "dist"]
+  }

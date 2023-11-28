@@ -17,18 +17,17 @@ const Contacto = () => {
       setIsSending(false);
       return;
     }
-
-    const { name, email, subject, message } = formulario.current;
+    const { user_name, user_email, phone, message } = formulario.current;
 
     const newErrors = {};
-    if (!name.value.trim()) {
-      newErrors.name = '*Este campo es obligatorio';
+    if (!user_name.value.trim()) {
+      newErrors.user_name = '*Este campo es obligatorio';
     }
-    if (!email.value.trim()) {
-      newErrors.email = '*Este campo es obligatorio';
+    if (!user_email.value.trim()) {
+      newErrors.user_email = '*Este campo es obligatorio';
     }
-    if (!subject.value.trim()) {
-      newErrors.subject = '*Este campo es obligatorio';
+    if (!phone.value.trim()) {
+      newErrors.phone = '*Este campo es obligatorio';
     }
     if (!message.value.trim()) {
       newErrors.message = '*Este campo es obligatorio';
@@ -42,7 +41,6 @@ const Contacto = () => {
 
     try {
       await emailjs.sendForm('service_zcqckab', 'template_xn5d0qm', formulario.current, 'wih491HK3bFif_3oU');
-
       Swal.fire(
         '¡Gracias!',
         'Te responderé en cuanto vea el mensaje!',
@@ -62,24 +60,20 @@ const Contacto = () => {
           <h2 className="mb-6 text-3xl xs:text-xl sm:text-2xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contactanos</h2>
           <form action="#" className="mb-2 space-y-4 " ref={formulario}>
             <div>
-              <label htmlFor="name" className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-300">Nombre Completo*</label>
-              <input type="text" id="name" className={`shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xs sm:text-sm md:text-lg rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light ${errors.name ? 'border-red-500' : ''}`} placeholder="Juan Cruz Perez" required />
-              {errors.name && <span className="text-red-500">{errors.name}</span>}
+              <label  className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-300">Nombre Completo*</label>
+              <input type="text" name="user_name" className={`shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xs sm:text-sm md:text-lg rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light ${errors.user_name ? 'border-red-500' : ''}`} placeholder="Juan Cruz Perez" required />
             </div>
             <div>
-              <label htmlFor="email" className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-300">Email*</label>
-              <input type="email" id="email" className={`shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xs sm:text-sm md:text-lg rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light ${errors.email ? 'border-red-500' : ''}`} placeholder="nombre@correo.com" required />
-              {errors.email && <span className="text-red-500">{errors.email}</span>}
+              <label  className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-300">Email*</label>
+              <input type="text" name="user_email" className={`shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xs sm:text-sm md:text-lg rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light ${errors.user_email ? 'border-red-500' : ''}`} placeholder="nombre@correo.com" required />
             </div>
             <div>
-              <label htmlFor="subject" className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-300">Motivo de Contacto*</label>
-              <input type="text" id="subject" className={`block p-3 text-xs sm:text-sm md:text-lg w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light ${errors.subject ? 'border-red-500' : ''}`} placeholder="¿En que podemos ayudar?" required />
-              {errors.subject && <span className="text-red-500">{errors.subject}</span>}
+              <label  className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-300">Motivo de Contacto*</label>
+              <input type="text" name="phone" className={`block p-3 text-xs sm:text-sm md:text-lg w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light ${errors.phone ? 'border-red-500' : ''}`} placeholder="¿En que podemos ayudar?" required />
             </div>
             <div className="sm:col-span-2">
-              <label htmlFor="message" className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-400">Su Mensaje*</label>
-              <textarea id="message" rows="2" className={`block p-2.5 w-full h-auto text-xs sm:text-sm md:text-lg text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 ${errors.message ? 'border-red-500' : ''}`} placeholder="..."></textarea>
-              {errors.message && <span className="text-red-500">{errors.message}</span>}
+              <label  className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-400">Su Mensaje*</label>
+              <textarea name="message" rows="2" className={`block p-2.5 w-full h-auto text-xs sm:text-sm md:text-lg text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 ${errors.message ? 'border-red-500' : ''}`} placeholder="..."></textarea>
             </div>
             <button
               type="submit"
