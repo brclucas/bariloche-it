@@ -25,7 +25,7 @@ pipeline {
                 script {
                     try {
                         withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'DOCKERHUB_CREDENCIALS_PSW', usernameVariable: 'DOCKERHUB_CREDENCIALS_USR')]) {
-                            sh "echo \$DOCKERHUB_CREDENCIALS_PSW | docker login -u \$DOCKERHUB_CREDENCIALES_USR --password-stdin"
+                        sh "echo -n $DOCKERHUB_CREDENCIALS_PSW | docker login -u $DOCKERHUB_CREDENCIALS_USR --password-stdin "
                         }
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
