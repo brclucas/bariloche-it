@@ -6,7 +6,6 @@ pipeline {
         DOCKER_IMAGE_TAG = "1.0.${env.BUILD_NUMBER}"
         P_App = 3000
         P_Cont= 3000
-        Image_Prev = env.BUILD_NUMBER.toInteger() - 1
     }
     stages {
         // ... etapas anteriores
@@ -15,6 +14,9 @@ pipeline {
             steps {
                 script {
                     def containerName = "BIT-Jenkins"
+
+                    // Calcular la imagen anterior
+                    def Image_Prev = env.BUILD_NUMBER.toInteger() - 1
 
                     // Chequear si hay un contenedor activo con la imagen anterior
                     def existingContainerId = sh(script: "docker ps -q --filter ancestor=${env.RepoDockerHub}/${env.NameContainer}", returnStdout: true).trim()
