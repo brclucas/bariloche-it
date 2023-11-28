@@ -6,8 +6,6 @@ import { AiOutlineArrowDown } from 'react-icons/ai';
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { Link } from 'react-scroll';
-import LightsSvg from '../../public/LightsSvg';
-import ImageSlider from './Components/Carrusel';
 
 const Principal = () => {
   useEffect(() => {
@@ -16,16 +14,8 @@ const Principal = () => {
 
   return (
 
-    <section id="inicio" className='bg-nav flex flex-col md:flex-row lg:flex-row xl:flex-row h-screen max-h-max[80vh]'>
-          {/* Este div solo se muestra en dispositivos móviles */}
-          <div className='h-screen hidden max-cel:block'>       
-            <ImageSlider />
-          </div>
-      {/* Este div solo se muestra en dispositivos XL */}
-      <div className='hidden md:block xl:mx-20 lg:mx-20 md:mx-20 sm:mx-10 xs:mx-5 xl:mt-25 lg:mt-25 md:mt-25 sm:mt-25 xs:mt-25'>
-      <div className='animate-pulse pointer-events-none '>
-        <LightsSvg />
-      </div >
+    <section id="inicio" className='  flex-col md:flex-row lg:flex-row xl:flex-row cel:h-screen max-h-max[20vh]'>
+      <div className='block xl:mx-20 lg:mx-20 md:mx-20 sm:mx-10 xs:mx-5 xl:mt-25 lg:mt-25 md:mt-10 sm:mt-10 xs:mt-10'>
         <div data-aos="fade-right">
           <div className='mt-0'>
             <h3 className=' select-none xs:text-4xl md:text-3xl lg:text-5xl xl:text-6xl text-white mb-5'>¡Bienvenido! 👨🏻‍💻</h3>

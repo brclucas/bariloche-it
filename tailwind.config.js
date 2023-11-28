@@ -10,6 +10,11 @@ export const content = [
 ];
 export const theme = {
   extend: {
+    margin: {
+      '5%': '5%',
+      '10%': '10%',
+      '25%': '25%',
+    },
     spacing: {
       '15': '3.5rem', // Equivalente a 40px
       '25': '7rem', 

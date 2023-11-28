@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from "react";
 import { Link } from 'react-scroll';
-import ButtonLoad from "./Components/ButtonLoad";
+import ButtonLoad from "../Components/ButtonLoad";
 
 const Nav = () => {
   return (

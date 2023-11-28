@@ -1,22 +1,29 @@
 import React from 'react';
 import Principal from './pages/Principal.jsx';
 import Contacto from './pages/Contacto'; 
-import Nav from './pages/Nav'; 
-import ButtonMobile from './pages/ButtomMobile';
+import TopNavBar from './pages/Components/TopNavBar.jsx'; 
+import Telefonos from './pages/Telefonos';
+import LightsSvg from '../public/LightsSvg';
 import 'flowbite';
 
 
 const page = () => {
   return (
     <div>
-      <Nav/>
+      <div className='animate-pulse pointer-events-none '>
+        <LightsSvg />
+      </div >
+      <TopNavBar/>
+      <div className='hidden cel:block'>
       <Principal/>
-      <div className='hidden md:block'>
       <Contacto/>
       </div>
-      <ButtonMobile/>
+      <div className="sm:block md:hidden">
+      <Telefonos/>
+      </div>
     </div>
   );
 };
 
 export default page;
+

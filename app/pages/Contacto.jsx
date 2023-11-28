@@ -1,37 +1,37 @@
 'use client'
+
 import React, { useRef, useState } from 'react';
 import emailjs from 'emailjs-com';
 import Swal from 'sweetalert2';
-import CountrySelect from './Components/CountrySelect';
 
 const Contacto = () => {
   const formulario = useRef();
   const [errors, setErrors] = useState({});
-  const [selectedCountry, setSelectedCountry] = useState(null);
   const [isSending, setIsSending] = useState(false);
 
-  const handleCountryChange = (selectedOption) => {
-    setSelectedCountry(selectedOption);
-  };
-
-  const sendEmail = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSending(true);
 
-    const { user_name, user_email, message, phone, prefix } = formulario.current;
+    if (!formulario.current) {
+      setIsSending(false);
+      return;
+    }
+
+    const { name, email, subject, message } = formulario.current;
 
     const newErrors = {};
-    if (user_name.value.trim() === '') {
-      newErrors.user_name = 'El campo Nombre es obligatorio';
+    if (!name.value.trim()) {
+      newErrors.name = '*Este campo es obligatorio';
     }
-    if (user_email.value.trim() === '') {
-      newErrors.user_email = 'El campo Email es obligatorio';
+    if (!email.value.trim()) {
+      newErrors.email = '*Este campo es obligatorio';
     }
-    if (message.value.trim() === '') {
-      newErrors.message = 'El campo Mensaje es obligatorio';
+    if (!subject.value.trim()) {
+      newErrors.subject = '*Este campo es obligatorio';
     }
-    if (phone.value.trim() === '') {
-      newErrors.phone = 'El campo Teléfono es obligatorio';
+    if (!message.value.trim()) {
+      newErrors.message = '*Este campo es obligatorio';
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -56,44 +56,41 @@ const Contacto = () => {
   };
 
   return (
-    <div id="contacto" className="bg-nav flex items-center justify-center">
-      <main className="bg-wait p-6 xs:b-10 md:b-10 lg:b-12 xl:b-16 rounded-md w-full max-w-md text-center">
-        <h1 className="text-5xl text-red italic mb-4 items-center justify-center text-center">¡Contactame!</h1>
-        <div className="bg-white h-2 mb-6"></div>
-        <form ref={formulario} onSubmit={sendEmail} className="text-white">
-          <label className="block mb-2">Nombre</label>
-          <input className="w-[80%] rounded-md mb-4" type="text" name="user_name" placeholder="Nombre Completo"/>
-          {errors.user_name && <span className="text-red-500">{errors.user_name}</span>}
-
-          <label className="block mb-2">Email</label>
-          <input className="w-[80%] rounded-md mb-4" type="email" name="user_email" placeholder="Correo@ejemplo.com" />
-          {errors.user_email && <span className="text-red-500">{errors.user_email}</span>}
-
-          <label className="block mb-2">Teléfono</label>
-          <div className="w-[80%] mx-auto flex flex-col mb-4 text-center">
-            <CountrySelect className="text-black mr-2 w-[80%]" onChange={handleCountryChange} selectedCountry={selectedCountry} />
-            <input
-              className="w-[100%] rounded-md p-2 text-black"
-              type="tel"
-              name="phone"
-              placeholder={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`}
-            />
-          </div>
-          <input hidden={true} name="prefix" defaultValue={`Teléfono ${selectedCountry ? selectedCountry.prefix : ''}`} />
-          {errors.phone && <span className="text-red-500">{errors.phone}</span>}
-
-          <label className="block mb-2">Mensaje</label>
-          <textarea className=" w-[80%] rounded-md mb-4" name="message" placeholder="Envianos tu consulta y te contestaremos en breve..."/>
-
-          {errors.message && <span className="text-red-500">{errors.message}</span>}
-
-          <input
-            className={`rounded-md w-full ${isSending ? 'animate-pulse bg-yellow' : 'bg-nav'}`}
-            type="submit"
-            value="Enviar"
-          />
-        </form>
-      </main>
+    <div id="contacto" className=" flex items-center justify-center">
+      <section className="rounded-lg bg-white dark:bg-gray-900 md:mb-20">
+        <div className="py-4 lg:py-8 px-4 mx-auto max-w-screen-lg w-full">
+          <h2 className="mb-6 text-3xl xs:text-xl sm:text-2xl md:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contactanos</h2>
+          <form action="#" className="mb-2 space-y-4 " ref={formulario}>
+            <div>
+              <label htmlFor="name" className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-300">Nombre Completo*</label>
+              <input type="text" id="name" className={`shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xs sm:text-sm md:text-lg rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light ${errors.name ? 'border-red-500' : ''}`} placeholder="Juan Cruz Perez" required />
+              {errors.name && <span className="text-red-500">{errors.name}</span>}
+            </div>
+            <div>
+              <label htmlFor="email" className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-300">Email*</label>
+              <input type="email" id="email" className={`shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xs sm:text-sm md:text-lg rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light ${errors.email ? 'border-red-500' : ''}`} placeholder="nombre@correo.com" required />
+              {errors.email && <span className="text-red-500">{errors.email}</span>}
+            </div>
+            <div>
+              <label htmlFor="subject" className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-300">Motivo de Contacto*</label>
+              <input type="text" id="subject" className={`block p-3 text-xs sm:text-sm md:text-lg w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light ${errors.subject ? 'border-red-500' : ''}`} placeholder="¿En que podemos ayudar?" required />
+              {errors.subject && <span className="text-red-500">{errors.subject}</span>}
+            </div>
+            <div className="sm:col-span-2">
+              <label htmlFor="message" className="block mb-0 text-xs sm:text-sm md:text-lg font-medium text-gray-900 dark:text-gray-400">Su Mensaje*</label>
+              <textarea id="message" rows="2" className={`block p-2.5 w-full h-auto text-xs sm:text-sm md:text-lg text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 ${errors.message ? 'border-red-500' : ''}`} placeholder="..."></textarea>
+              {errors.message && <span className="text-red-500">{errors.message}</span>}
+            </div>
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              className={`py-3 px-5 text-xs sm:text-sm md:text-lg font-medium flex items-center justify-center text-black rounded-lg ${isSending ? 'animate-pulse bg-yellow' : 'bg-nav'} hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800`}
+            >
+              Send message
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
   );
 };

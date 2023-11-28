@@ -49,26 +49,13 @@ body {
   width: 80%; /* Ajusta según tus necesidades */
   margin: 100px auto 0 auto;
 }
-.slick-slider {
-  height: 70%; /* Para ocupar el 100% de la altura del contenedor principal (h-screen) */
-
-}
 
 .card-wrapper {
-  height: 60%; /* Para ocupar el 100% de la altura del contenedor principal (h-screen) */
-}
-
-.slick-slider {
-  height: 60%; /* Para ocupar el 100% de la altura del contenedor principal (h-screen) */
-
+  height: 100%; /* Para ocupar el 100% de la altura del contenedor principal (h-screen) */
 }
 
 
 .slick-initialized{
   height: 60%; /* Para ocupar el 100% de la altura del contenedor principal (h-screen) */
 
-}
-
-.slick-dots{
-  bottom: auto;
 }
