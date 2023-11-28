@@ -1,27 +1,51 @@
 pipeline {
     agent any
-    environment{
-        DOCKERHUB_CREDENCIALS = credentials ('cb6e791c-399e-4b69-a055-11ac497ea1c2')
+    environment {
         RepoDockerHub = 'brclucas'
         NameContainer = 'bit'
+        DOCKER_IMAGE_TAG = "1.0.${env.BUILD_NUMBER}"
     }
 
     stages {
-        stage('Build'){
-            steps{
-                sh "docker build -t brclucas/bit:1.0.${env.BUILD_NUMBER} ."
+        stage('Build') {
+            steps {
+                script {
+                    try {
+                        sh "docker build -t ${env.RepoDockerHub}/${env.NameContainer}:${env.DOCKER_IMAGE_TAG} ."
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        error("Error during Docker build: ${e.message}")
+                    }
+                }
             }
         }
-        stage('Login to Dockerhub'){
-            steps{
-                sh "echo $DOCKERHUB_CREDENCIALS_PSW | docker login -u $DOCKERHUB_CREDENCIALS_USR --password-stdin "
+
+        stage('Login to Dockerhub') {
+            steps {
+                script {
+                    try {
+                        withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'DOCKERHUB_CREDENCIALS_PSW', usernameVariable: 'DOCKERHUB_CREDENCIALS_USR')]) {
+                            sh "echo \$DOCKERHUB_CREDENCIALS_PSW | docker login -u \$DOCKERHUB_CREDENCIALES_USR --password-stdin"
+                        }
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        error("Error during Docker login: ${e.message}")
+                    }
+                }
             }
         }
-        stage('Push image to Dockerhub'){
-            steps{
-                sh "docker push ${env.RepoDockerHub}/${env.NameContainer}:1.0.${env.BUILD_NUMBER} "
+
+        stage('Push image to Dockerhub') {
+            steps {
+                script {
+                    try {
+                        sh "docker push ${env.RepoDockerHub}/${env.NameContainer}:${env.DOCKER_IMAGE_TAG}"
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        error("Error during Docker push: ${e.message}")
+                    }
+                }
             }
         }
     }
-
 }
