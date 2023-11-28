@@ -30,7 +30,7 @@ pipeline {
                     }
 
                     // Eliminar la imagen anterior
-                    sh "docker rmi ${env.RepoDockerHub}/${env.NameContainer}:${env.DOCKER_IMAGE_LAST}"
+                    sh "docker rmi -f ${env.RepoDockerHub}/${env.NameContainer}:${env.DOCKER_IMAGE_LAST}"
 
                     // Crear y ejecutar el nuevo contenedor con la nueva imagen
                     sh "docker run -d --name ${containerName} -p ${env.P_App}:${env.P_Cont} ${env.RepoDockerHub}/${env.NameContainer}:${env.DOCKER_IMAGE_TAG}"
