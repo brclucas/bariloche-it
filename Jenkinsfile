@@ -56,13 +56,13 @@ pipeline {
                     def containerName = "BIT-Jenkins"
 
                     // Chequear si hay un contenedor activo con la imagen anterior
-                    def existingContainerId = sh(script: "docker ps -q --filter ancestor=${env.RepoDockerHub}/${env.NameContainer}", returnStdout: true).trim()
+                    def existingContainerId = sh(script: "docker ps -q --filter name=${containerName}", returnStdout: true).trim()
 
                     
                     // Si hay un contenedor activo, pararlo y borrarlo
                     if (existingContainerId) {
-                        sh "docker stop ${containerName}"
-                        sh "docker rm ${containerName}"
+                        sh "docker stop ${existingContainerId}"
+                        sh "docker rm ${existingContainerId}"
                     }
 
                     // Eliminar la imagen anterior
