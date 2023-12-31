@@ -15,7 +15,8 @@
 # production
 /build
 /next
-.netx
+.next
+/.next/
 
 # misc
 .DS_Store

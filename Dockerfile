@@ -16,11 +16,11 @@ RUN npm install
 # Copia el resto de la aplicación
 COPY . .
 
-# Copia la carpeta .next generada por npm run build
-COPY .next .next
-
 # Expon el puerto en el que la aplicación se ejecuta (si es necesario)
 EXPOSE 3000
+
+# Comando para build de la aplicación
+CMD ["npm", "run", "build"]
 
 # Comando para iniciar la aplicación
 CMD ["npm", "start"]
