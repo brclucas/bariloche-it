@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh "docker build -t ${env.RepoDockerHub}/${env.NameContainer}:${env.DOCKER_IMAGE_TAG} ${env.RepoDockerHub}/${env.NameContainer}:latest ."
+                        sh "docker build -t ${env.RepoDockerHub}/${env.NameContainer}:${env.DOCKER_IMAGE_TAG} -t ${env.RepoDockerHub}/${env.NameContainer}:latest ."
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         error("Error during Docker build: ${e.message}")
