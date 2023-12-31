@@ -42,6 +42,8 @@ pipeline {
                 script {
                     try {
                         sh "docker push ${env.RepoDockerHub}/${env.NameContainer}:${env.DOCKER_IMAGE_TAG}"
+                        sh "docker push ${env.RepoDockerHub}/${env.NameContainer}:latest"
+
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
                         error("Error during Docker push: ${e.message}")
