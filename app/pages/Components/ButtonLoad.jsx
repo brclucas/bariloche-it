@@ -13,7 +13,7 @@ const ButtonLoad = () => {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Una vez que la carga asíncrona está lista, redirige al usuario
-      window.location.href = 'http://localhost:3333';
+      window.location.href = 'http://barilocheit.com.ar:880';
     } finally {
       setIsLoading(false);
     }
