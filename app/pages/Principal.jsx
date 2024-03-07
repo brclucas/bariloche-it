@@ -18,7 +18,7 @@ const Principal = () => {
       <div className='block xl:mx-20 lg:mx-20 md:mx-20 sm:mx-10 xs:mx-5 xl:mt-25 lg:mt-25 md:mt-10 sm:mt-10 xs:mt-10'>
         <div data-aos="fade-right">
           <div className='mt-0'>
-            <h3 className=' select-none xs:text-4xl md:text-3xl lg:text-5xl xl:text-6xl text-white mb-5'>¡Bienvenido! 👨🏻‍💻</h3>
+            <h3 className=' select-none xs:text-4xl md:text-3xl lg:text-5xl xl:text-6xl text-white mb-5'>¡Bienvenido!sss 👨🏻‍💻</h3>
             <h2 className=' select-none xs:text-4xl md:text-3xl lg:text-5xl xl:text-6xl text-white mb-5'>
               Somos </h2>
               <h2 className='select-none xs:text-4xl md:text-4xl lg:text-6xl xl:text-7xl text-glaciar mb-5'>
